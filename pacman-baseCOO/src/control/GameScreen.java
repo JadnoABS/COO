@@ -15,9 +15,7 @@ import utils.Consts;
 import utils.Drawing;
 import utils.Stage;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.Console;
@@ -174,7 +172,10 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
                 }
             }
         }
-               
+        Font currentFont = g2.getFont();
+        Font newFont = currentFont.deriveFont(currentFont.getSize() * 1.4F);
+        g2.setFont(newFont);
+
         cont++;
         this.controller.drawAllElements(gameState.getElemArray(), g2);
         this.controller.processAllElements(gameState.getElemArray(), gameState.getStage().getMatrix(),cont);

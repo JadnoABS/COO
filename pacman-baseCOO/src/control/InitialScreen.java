@@ -12,9 +12,6 @@ public class InitialScreen extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	private JButton startButton;
 	private JButton openButton;
-	private JMenu menu;
-	private JMenuBar menuBar;
-	private JMenuItem menuItem;
 	private final String nomeImagemInicial = "inicialimagem.png";
 	private static String[] levels = { "Level 1", "Level 2", "Level 3" };
 	
@@ -22,10 +19,7 @@ public class InitialScreen extends javax.swing.JFrame {
 	
 	public InitialScreen(){
 		configureInitialScreen();
-//		configureMenu();
-		configureStartButton();
-		configureOpenButton();
-		configureComboBox();
+		configureMenu();
 	}
 	
 	private void configureInitialScreen(){
@@ -50,58 +44,53 @@ public class InitialScreen extends javax.swing.JFrame {
 	}
 
 	private void configureMenu() {
+		JMenu menu;
+		JMenuBar menuBar;
+		JMenuItem menuItem;
+		JMenuItem subItem;
+
 		menuBar = new JMenuBar();
-		menu = new JMenu("AA");
+		menu = new JMenu("Jogar");
 		menuBar.add(menu);
-		menuItem = new JMenuItem("New",
-				new ImageIcon("images/new.gif"));
-		menuItem.setMnemonic(KeyEvent.VK_N);
+
+		menuItem = new JMenu("Iniciar novo jogo");
+		subItem = new JMenuItem("Level 1");
+		subItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				Main.level = 1;
+				new HandlerStartButton().actionPerformed(actionEvent);
+			}
+		});
+		menuItem.add(subItem);
+
+		subItem = new JMenuItem("Level 2");
+		subItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				Main.level = 2;
+				new HandlerStartButton().actionPerformed(actionEvent);
+			}
+		});
+		menuItem.add(subItem);
+
+		subItem = new JMenuItem("Level 3");
+		subItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				Main.level = 3;
+				new HandlerStartButton().actionPerformed(actionEvent);
+			}
+		});
+		menuItem.add(subItem);
+
+		menu.add(menuItem);
+
+		menuItem = new JMenuItem("Abrir jogo salvo");
+		menuItem.addActionListener(new HandlerOpenButton());
 		menu.add(menuItem);
 
 		this.setJMenuBar(menuBar);
-	}
-	private void configureStartButton(){
-		startButton = new JButton("Iniciar");
-		startButton.setSize(100, 50);
-		startButton.setAlignmentX(CENTER_ALIGNMENT);
-		startButton.setAlignmentY(CENTER_ALIGNMENT);
-		startButton.setLocation(250, 275);
-		startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		HandlerStartButton handlerIniciarJogo = new HandlerStartButton();
-		startButton.addActionListener(handlerIniciarJogo);
-		add(startButton);
-	}
-	
-	/**
-	 * Configurar botão de Iniciar Jogo
-	 */
-	private void configureOpenButton(){
-		startButton = new JButton("Open");
-		startButton.setSize(100, 50);
-		startButton.setAlignmentX(CENTER_ALIGNMENT);
-		startButton.setAlignmentY(CENTER_ALIGNMENT);
-		startButton.setLocation(250, 500);
-		startButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		HandlerOpenButton handlerOpen = new HandlerOpenButton();
-		startButton.addActionListener(handlerOpen);
-		add(startButton);
-	}
-	
-	
-	private void configureComboBox(){
-		box = new JComboBox<String>(levels);
-		box.setSize(100, 40);
-		box.setSelectedIndex(0);
-		box.setLocation(500, 10);
-		box.addItemListener(new ItemListener(){
-			public void itemStateChanged(ItemEvent event){
-				if(event.getStateChange() == ItemEvent.SELECTED){ 
-					JComboBox<String> cb = (JComboBox<String>)event.getSource();
-					Main.level = cb.getSelectedIndex() + 1;
-				}
-			}			
-		});
-		add(box);
 	}
 
 	public class HandlerStartButton implements ActionListener{

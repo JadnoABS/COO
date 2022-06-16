@@ -12,6 +12,7 @@ public class Pacman extends ElementMove  {
     private int numberLifes=1;
     private int numberDotstoEat=0;
     private int numberGhosttoEat=4;
+	private int ghostEatenOnCurrentPowerPellet = 0;
     private long startTimePower=0;
     
     
@@ -89,4 +90,15 @@ public class Pacman extends ElementMove  {
 	}
 
 
+	public int getGhostEatenOnCurrentPowerPellet() {
+		return ghostEatenOnCurrentPowerPellet;
+	}
+
+	public void setGhostEatenOnCurrentPowerPellet(int ghostEatenOnCurrentPowerPellet) {
+		this.ghostEatenOnCurrentPowerPellet = ghostEatenOnCurrentPowerPellet;
+	}
+
+	public void addGhostEatenOnCurrentPowerPellet() {
+		this.ghostEatenOnCurrentPowerPellet++;
+	}
 }

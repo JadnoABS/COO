@@ -3,15 +3,15 @@ package control;
 import javax.swing.JFrame;
 
 // Problemas a serem resolvidos:
-// - (Perguntar pra professora sobre) Fazer o pacman so ganhar vida com 10000 pontos
-// - (PERGUNTAR PRA PROF) Trocar os botoes da tela inicial por um menu
+// - (RESOLVIDO) Fazer o pacman so ganhar vida com 10000 pontos
+// - (RESOLVIDO) Trocar os botoes da tela inicial por um menu
 // - (RESOLVIDO) Manter os fantasmas se movendo
 // - (RESOLVIDO) Jogo continua se o pacman perde uma vida
 // - (ACHO QUE RESOLVIDO) Jogo nao abre as vezes
 // - (RESOLVIDO) Implementar os metodos de salvar jogo
+// - (RESOLVIDO) Trocar a imagem do fantasma para uma que indique q qtd de pontos ganhos ao comer ele
 // - Incluir classe de teste com JUnit (pelo menos 3 metodos de teste)
 // - Incluir o nivel 4 (tem que ser mais dificil e inlcuir um elemento adicional)
-// - Trocar a imagem do fantasma para uma que indique q qtd de pontos ganhos ao comer ele
 // - Verificar a hierarquia da classe Element
 // - Documentar cada um dos metodos
 // - Elaborar um diagrama de classes

@@ -18,6 +18,10 @@ public class GameController {
     	int numberGhost=pacman.getNumberGhosttoEat();
     	for(int i=numberGhost+1; i<elemArray.size(); i++){
             elemArray.get(i).autoDraw(g);
+
+			if(elemArray.get(i) instanceof EatenGhostScore)
+				if(((EatenGhostScore) elemArray.get(i)).getElapsedTime() >= 2000)
+					elemArray.remove(i);
         }
         
         for(int i=0;i<=numberGhost;i++){
@@ -57,7 +61,7 @@ public class GameController {
         		System.exit(0);
         	}
         	else{
-        		Main.gamePacMan.reStartGame(1);
+        		Main.gamePacMan.reStartGame(pacman.getLifes());
         	}
         }
         else{
@@ -137,10 +141,16 @@ public class GameController {
                 if(eTemp.isTransposable() && eTemp.isMortal()){
                     elements.remove(eTemp);
                     if (eTemp instanceof Ghost){
-                  	  pacman.minusNumberGhotstoEat();
-                  	  pacman.addScore(200*(4-pacman.getNumberGhosttoEat()));
-                  	  pacman.addRemainingScore(200*(4-pacman.getNumberGhosttoEat()));
-                    } 
+						// Correcao do erro dos pontos ganhos no power pellet
+						pacman.addGhostEatenOnCurrentPowerPellet();
+						int score = 200*(pacman.getGhostEatenOnCurrentPowerPellet());
+						pacman.minusNumberGhotstoEat();
+						pacman.addScore(score);
+						pacman.addRemainingScore(score);
+
+						// Para pintar na tela o numero de pontos ganhos
+						elements.add(new EatenGhostScore(score, eTemp.getPos()));
+                    }
                     
                     if (eTemp instanceof ElementGivePoint){                     
                       pacman.addScore(((ElementGivePoint) eTemp).getNumberPoints());
@@ -153,15 +163,16 @@ public class GameController {
                     	  for(int k=1;k<=pacman.getNumberGhosttoEat(); k++){
                     		  ((Ghost)elements.get(k)).changeGhosttoBlue("ghostBlue.png");
                     	  }
+						  pacman.setGhostEatenOnCurrentPowerPellet(0);
                     	  pacman.setStartTimePower(System.currentTimeMillis());
-                      }    
+                      }
                       
                     }
                 }
                 int remainingScore=pacman.getRemainingScore();
-                if(remainingScore>10000){
+                if(remainingScore>4000){
                 	pacman.addLife();
-                	pacman.setRemainingScore(remainingScore-10000);
+                	pacman.setRemainingScore(remainingScore-4000);
                 }
                 
             }   

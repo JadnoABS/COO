@@ -34,17 +34,16 @@ public class GameController {
             return;
     	Pacman pacman = (Pacman)elements.get(0);
     	int numberGhost = pacman.getNumberGhosttoEat();
-    	
-        
+
     	checkElementColideWall(elements, numberGhost);
     	boolean overlapGhostPacman=checkOverlapGhostPacman(elements,pacman, numberGhost);
+		boolean overlapLaser = checkOverlapLaserPacman(elements, pacman);
 
-        if(overlapGhostPacman) { 
+        if(overlapGhostPacman || overlapLaser) {
         	pacman.setNumberLifes(pacman.getLifes()-1);
         	if(pacman.getLifes()>0){
 				pacman.setPosition(1,1); // PACMAN VOLTA PARA A POSICAO INICIAL QUANDO PERDE UMA VIDA
 //        		Main.gamePacMan.reStartGame(pacman.getLifes());
-				System.out.println("AAA");
         	}
         	else{
         		Main.gamePacMan.dispose();
@@ -93,6 +92,18 @@ public class GameController {
         }
         return overlapGhostPacman;
 	}
+
+	private boolean checkOverlapLaserPacman(ArrayList<Element> elements, Pacman pacman) {
+		for (Element element : elements) {
+			if(element instanceof Laser) {
+				if(Laser.isActive() && element.overlap(pacman)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	private void checkElementColideWall(ArrayList<Element> elements, int numberGhost) {
     	for (int i=0;i<=numberGhost;i++){
         	ElementMove elementMove = (ElementMove)elements.get(i);

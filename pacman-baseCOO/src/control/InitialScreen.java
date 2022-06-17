@@ -84,6 +84,16 @@ public class InitialScreen extends javax.swing.JFrame {
 		});
 		menuItem.add(subItem);
 
+		subItem = new JMenuItem("Level 4");
+		subItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent actionEvent) {
+				Main.level = 4;
+				new HandlerStartButton().actionPerformed(actionEvent);
+			}
+		});
+		menuItem.add(subItem);
+
 		menu.add(menuItem);
 
 		menuItem = new JMenuItem("Abrir jogo salvo");

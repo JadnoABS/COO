@@ -1,16 +1,7 @@
 package control;
 
-import elements.Blinky;
+import elements.*;
 
-import elements.Cherry;
-import elements.Clyde;
-import elements.Inky;
-import elements.PacDots;
-import elements.Pinky;
-import elements.PowerPellet;
-import elements.Pacman;
-import elements.Element;
-import elements.Wall;
 import utils.Consts;
 import utils.Drawing;
 import utils.Stage;
@@ -80,27 +71,21 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     }    
     
     private void fillInitialElemArrayFromMatrix(int [][]matrix) {
-	 	pacman = new Pacman("pacman.png");
-        pacman.setPosition(1,1);
+        pacman = new Pacman("pacman.png");
         this.addElement(pacman);
 
         Blinky blinky=new Blinky("blinky.png");
-        blinky.setPosition (10,8);
         this.addElement(blinky);
 
         Pinky pinky=new Pinky("pinky.png");
-        pinky.setPosition (10,9);
         this.addElement(pinky);
-        
+
         Inky inky=new Inky("inky.png");
-        inky.setPosition (10,10);
         this.addElement(inky);
-        
+
         Clyde clyde=new Clyde("clyde.png");
-        clyde.setPosition (8,9);
         this.addElement(clyde);
-        
-        
+
         for (int i=0;i<Consts.NUM_CELLS; i=i+1){
         	for(int j=0; j<Consts.NUM_CELLS; j=j+1){
         		switch (matrix[i][j]) {
@@ -109,27 +94,50 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         			wall1.setPosition (i,j);
         			this.addElement(wall1);
         			break;
-                case 0:    
+                case 0:
                     PacDots pacDot=new PacDots("pac-dot.png");
                     pacDot.setPosition (i,j);
                     this.addElement(pacDot);
                     pacman.addNumberDotstoEat();
                     break;
-                case 6:    
+                case 6:
                     PowerPellet power=new PowerPellet("power_Pellet.png");
                     power.setPosition (i,j);
                     this.addElement(power);
-                    break;    
+                    break;
+                case 2:
+                    blinky.setPosition(i,j);
+                    break;
+                case 3:
+                    pinky.setPosition(i,j);
+                    break;
+                case 4:
+                    inky.setPosition(i,j);
+                    break;
+                case 5:
+                    clyde.setPosition(i,j);
+                    break;
+                case 9:
+                    pacman.setPosition(i,j);
+                    break;
+                case 10:
+                    LaserGun laserGun = new LaserGun("gun.png");
+                    laserGun.setPosition(i,j);
+                    this.addElement(laserGun);
+                    break;
+                    case 11:
+                        Laser laser = new Laser("laser.png");
+                        laser.setPosition(i,j);
+                        this.addElement(laser);
                 default:
                     break;
         		}
             }
         }
 
-		
-	}
+    }
 
-	private void openSavedGame(String fileName) throws FileNotFoundException,IOException, ClassNotFoundException{
+    private void openSavedGame(String fileName) throws FileNotFoundException,IOException, ClassNotFoundException{
         ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(fileName));
         gameState = (GameState) entrada.readObject();
         entrada.close();
@@ -175,6 +183,11 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         Font currentFont = g2.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 1.4F);
         g2.setFont(newFont);
+        if(Main.level == 1){
+            g2.setColor(Color.BLACK);
+        } else {
+            g2.setColor(Color.WHITE);
+        }
 
         cont++;
         this.controller.drawAllElements(gameState.getElemArray(), g2);

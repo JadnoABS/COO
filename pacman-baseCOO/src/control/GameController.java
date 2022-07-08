@@ -12,7 +12,13 @@ import utils.Consts;
 import utils.Position;
 
 public class GameController {
-	
+
+	/**
+	 * Desenha todos os elementos na tela
+	 *
+	 * @param elemArray
+	 * @param g
+	 */
     public void drawAllElements(ArrayList<Element> elemArray, Graphics g){
     	Pacman pacman=(Pacman) elemArray.get(0);
     	int numberGhost=pacman.getNumberGhosttoEat();
@@ -29,6 +35,14 @@ public class GameController {
         }
         
     }
+
+	/**
+	 * Processa as interacoes entre os elementos do jogo
+	 *
+	 * @param elements
+	 * @param matrix
+	 * @param cont
+	 */
     public void processAllElements(ArrayList<Element> elements, int [][]matrix, int cont){
         if(elements.isEmpty())
             return;
@@ -54,7 +68,7 @@ public class GameController {
         }
         else if(pacman.getNumberDotstoEat() == 0){  
         	Main.level += 1;
-        	if(Main.level>=4){
+        	if(Main.level>=5){
         		Main.gamePacMan.dispose();
         		JOptionPane.showMessageDialog(null, "Fim do jogo");
         		System.exit(0);
@@ -82,7 +96,15 @@ public class GameController {
 	        }
         }
     }
-    
+
+	/**
+	 * Verifica se o Pacman colidiu com um Ghost (quando este nao esta mortal)
+	 *
+	 * @param elements
+	 * @param pacman
+	 * @param numberGhost
+	 * @return
+	 */
 	private boolean checkOverlapGhostPacman(ArrayList<Element> elements, Pacman pacman,int numberGhost) {
         boolean overlapGhostPacman=false;
         for (int i=1;i<=numberGhost;i++){
@@ -93,6 +115,13 @@ public class GameController {
         return overlapGhostPacman;
 	}
 
+	/**
+	 * Verifica se o Pacman passou pelo raio laser ativo
+	 *
+	 * @param elements
+	 * @param pacman
+	 * @return
+	 */
 	private boolean checkOverlapLaserPacman(ArrayList<Element> elements, Pacman pacman) {
 		for (Element element : elements) {
 			if(element instanceof Laser) {
@@ -104,6 +133,12 @@ public class GameController {
 		return false;
 	}
 
+	/**
+	 * Verifica se cada um dos objetos moveis colidiu com uma parede
+	 *
+	 * @param elements
+	 * @param numberGhost
+	 */
 	private void checkElementColideWall(ArrayList<Element> elements, int numberGhost) {
     	for (int i=0;i<=numberGhost;i++){
         	ElementMove elementMove = (ElementMove)elements.get(i);
@@ -143,6 +178,13 @@ public class GameController {
         }
 		
 	}
+
+	/**
+	 * Verifica se o Pacman colidiu com algum Ghost mortal ou uma fruta e adiciona os pontos e vidas necessarios para a logica do jogo
+	 *
+	 * @param elements
+	 * @param pacman
+	 */
 	private void checkPacmanEatSomeOneAndOrTimeFruittoDesappear(ArrayList<Element> elements, Pacman pacman) {
 
         Element eTemp;
@@ -154,7 +196,7 @@ public class GameController {
                     if (eTemp instanceof Ghost){
 						// Correcao do erro dos pontos ganhos no power pellet
 						pacman.addGhostEatenOnCurrentPowerPellet();
-						int score = 200*(pacman.getGhostEatenOnCurrentPowerPellet());
+						int score = (int) Math.pow(2, pacman.getGhostEatenOnCurrentPowerPellet()) * 100;
 						pacman.minusNumberGhotstoEat();
 						pacman.addScore(score);
 						pacman.addRemainingScore(score);
@@ -207,6 +249,13 @@ public class GameController {
         }
         
 	}
+
+	/**
+	 * Controla o tempo de spawn das frutas
+	 *
+	 * @param elements
+	 * @param matrix
+	 */
 	private void checkTimetoAppearFruit(ArrayList<Element> elements,  int [][]matrix) {
         
         long elapsedTime = System.currentTimeMillis()-Main.time;
@@ -226,7 +275,13 @@ public class GameController {
         }
 		
 	}
-	
+
+	/**
+	 * Retorna uma posicao aleatoria do mapa do jogo
+	 *
+	 * @param matrix
+	 * @return
+	 */
 	private Position getValidRandomPositionMatrix(int[][] matrix) {
 		Random gerador = new Random();
 		int x;
@@ -239,6 +294,13 @@ public class GameController {
 		pos.setPosition(x, y);
 		return pos;
 	}
+
+	/**
+	 * Controla o tempo em que o Ghost fica mortal
+	 *
+	 * @param elements
+	 * @param pacman
+	 */
 	private void checkTimeGhostBeNormal(ArrayList<Element> elements,
 			Pacman pacman) {
         long start=pacman.getStartTimePower();
@@ -273,6 +335,14 @@ public class GameController {
 		
 	}
 
+	/**
+	 * Verifica se o elemento se encontra em uma posicao valida,
+	 * ou seja, se ele nao ocupa o mesmo espaco que um elemento nao transposable
+	 *
+	 * @param elemArray
+	 * @param elem
+	 * @return
+	 */
 	public boolean isValidPosition(ArrayList<Element> elemArray, Element elem){
         Element elemAux;
         for(int i = 1; i < elemArray.size(); i++){

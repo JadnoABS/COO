@@ -19,7 +19,10 @@ public abstract class Element implements Serializable{
         this.pos = new Position(1, 1);
         this.isTransposable = true;
         this.isMortal = false;
-        
+
+        /**
+         * Tenta carregar a imagem do elemento de acordo com o parametro imageName
+         */
         try {
             imageIcon = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + imageName);
             Image img = imageIcon.getImage();
@@ -32,7 +35,13 @@ public abstract class Element implements Serializable{
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    /**
+     * Verifica se a instancia se colide com o elemento elem do parametro
+     *
+     * @param elem
+     * @return
+     */
     public boolean overlap(Element elem) {
         double xDist = Math.abs(elem.pos.getX() - this.pos.getX());
         double yDist = Math.abs(elem.pos.getY() - this.pos.getY());

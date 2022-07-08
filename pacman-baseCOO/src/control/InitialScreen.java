@@ -21,7 +21,11 @@ public class InitialScreen extends javax.swing.JFrame {
 		configureInitialScreen();
 		configureMenu();
 	}
-	
+
+	/**
+	 * Configuracao dos elementos da tela inicial (menu e tamanho da tela)
+	 *
+	 */
 	private void configureInitialScreen(){
 		int sizeWidth = Consts.NUM_CELLS * Consts.CELL_SIZE + getInsets().left + getInsets().right;
 		int sizeHeight = Consts.NUM_CELLS * Consts.CELL_SIZE + getInsets().top + getInsets().bottom;
@@ -43,6 +47,10 @@ public class InitialScreen extends javax.swing.JFrame {
         //pack();
 	}
 
+	/**
+	 * Configuracao da MenuBar com as opcoes de novo jogo (com escolha de fase)
+	 * e de abrir jogo salvo
+	 */
 	private void configureMenu() {
 		JMenu menu;
 		JMenuBar menuBar;

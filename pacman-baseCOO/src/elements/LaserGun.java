@@ -24,6 +24,11 @@ public class LaserGun extends BackgroundElement{
         this.startTime = System.currentTimeMillis();
     }
 
+    /**
+     * Muda a imagem correspondente ao lasergun para produzir uma animacao
+     *
+     * @param imgIndex
+     */
     private void changeImage(int imgIndex) {
         try {
             imageIcon = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + images[imgIndex]);
@@ -38,6 +43,11 @@ public class LaserGun extends BackgroundElement{
         }
     }
 
+    /**
+     * Alem de desenhar a LaserGun na tela, verifica se ela esta parada, atirando ou preparando para atirar (animacao)
+     *
+     * @param g
+     */
     public void autoDraw(Graphics g) {
         if(!Laser.isActive()) {
             if(System.currentTimeMillis() - timeBetweenShots >= startTime + animationTime) {

@@ -10,11 +10,11 @@ import javax.swing.JFrame;
 // - (ACHO QUE RESOLVIDO) Jogo nao abre as vezes
 // - (RESOLVIDO) Implementar os metodos de salvar jogo
 // - (RESOLVIDO) Trocar a imagem do fantasma para uma que indique q qtd de pontos ganhos ao comer ele
+// - (RESOLVIDO) Incluir o nivel 4 (tem que ser mais dificil e inlcuir um elemento adicional)
+// - (RESOLVIDO) Documentar cada um dos metodos
+// - (RESOLVIDO) Elaborar um diagrama de classes
 // - Incluir classe de teste com JUnit (pelo menos 3 metodos de teste)
-// - Incluir o nivel 4 (tem que ser mais dificil e inlcuir um elemento adicional)
 // - Verificar a hierarquia da classe Element
-// - Documentar cada um dos metodos
-// - Elaborar um diagrama de classes
 // - Verificar se algo mais esta fora da especificacao
 
 

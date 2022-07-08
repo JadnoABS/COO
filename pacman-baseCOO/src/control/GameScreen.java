@@ -68,8 +68,15 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     public Pacman getPacman(){
     	return pacman;
-    }    
-    
+    }
+
+    /**
+     * Preenche o array de elementos a partir de uma matriz de inteiros
+     * (cada inteiro representa a posicao de um elemento especifico do jogo)
+     * (a relacao entre cada inteiro e cada elemento pode ser vista na classe Stage)
+     *
+     * @param matrix
+     */
     private void fillInitialElemArrayFromMatrix(int [][]matrix) {
         pacman = new Pacman("pacman.png");
         this.addElement(pacman);
@@ -125,10 +132,15 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
                     laserGun.setPosition(i,j);
                     this.addElement(laserGun);
                     break;
-                    case 11:
-                        Laser laser = new Laser("laser.png");
-                        laser.setPosition(i,j);
-                        this.addElement(laser);
+                case 11:
+                    Laser laser = new Laser("laser.png");
+                    laser.setPosition(i,j);
+                    this.addElement(laser);
+                    PacDots pacDott=new PacDots("pac-dot.png");
+                    pacDott.setPosition (i,j);
+                    this.addElement(pacDott);
+                    pacman.addNumberDotstoEat();
+                    break;
                 default:
                     break;
         		}
@@ -137,6 +149,15 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
 
     }
 
+    /**
+     * Abre o arquivo do jogo salvo e extrai dele um objeto serializado da classe GameState
+     * depois atribui esse objeto a variavel gameState que sera usada pelo jogo
+     *
+     * @param fileName
+     * @throws FileNotFoundException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     private void openSavedGame(String fileName) throws FileNotFoundException,IOException, ClassNotFoundException{
         ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(fileName));
         gameState = (GameState) entrada.readObject();
@@ -150,7 +171,12 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     public void removeElement(Element elem) {
         gameState.getElemArray().remove(elem);
     }
-    
+
+    /**
+     * Limpa o array de elementos e o preenche novamente com os elementos iniciais do level
+     *
+     * @param numberLifes
+     */
     public void reStartGame(int numberLifes){
     	gameState.getElemArray().clear();
     	gameState.setElemArray(new ArrayList<Element>());
@@ -160,7 +186,12 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     	fillInitialElemArrayFromMatrix(gameState.getStage().getMatrix());
     	((Pacman)gameState.getElemArray().get(0)).setNumberLifes(numberLifes);
     }
-    
+
+    /**
+     * Desenha cada novo frame do jogo na tela, pegando cada um de seus elementos e projetando-os com a posicao atualizada
+     *
+     * @param gOld
+     */
     @Override
     public void paint(Graphics gOld) {
         Graphics g = getBufferStrategy().getDrawGraphics();
@@ -200,7 +231,11 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
             getBufferStrategy().show();
         }
     }
-    
+
+    /**
+     * Ponto inicial da tela do jogo
+     * responsavel tambem pela temporizacao dos frames
+     */
     public void go() {
         TimerTask task = new TimerTask() {
             
@@ -211,7 +246,12 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         Timer timer = new Timer();
         timer.schedule(task, 0, Consts.DELAY);
     }
-    
+
+    /**
+     * Roda metodos de acordo com o evento de tecla acionado
+     *
+     * @param e
+     */
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             pacman.setMovDirection(Pacman.MOVE_UP);
@@ -229,6 +269,10 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
         } 
     }
 
+    /**
+     * Responsavel pela serializacao do objeto gameState para que o estado do jogo seja salvo em um arquivo
+     *
+     */
     private void saveElemArrayandStage() {
         try {
             ObjectOutputStream saida = new ObjectOutputStream(new FileOutputStream(fileName));
@@ -245,7 +289,9 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
  	}
 
 
-
+    /**
+     * Inicia os componentes do Java Swing
+     */
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);

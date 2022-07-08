@@ -1,0 +1,589 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": true,
+    "hideDataStructures": true,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "None", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 9,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "control.Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+BackgroundElement8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BackgroundElement</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ BackgroundElement(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Blinky8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Blinky</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Blinky(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Cherry8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cherry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   startTime: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Cherry(imageName: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Clyde8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Clyde</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Clyde(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Drawing111612081[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Drawing</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ draw(g: Graphics, imageIcon: ImageIcon, y: double, x: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EatenGhostScore8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EatenGhostScore</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   elapsedTime: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pos: Position [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   score: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startTime: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ EatenGhostScore(score: int, pos: Position)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Element8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Element</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   imageIcon: ImageIcon [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isMortal: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isTransposable: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   pos: Position [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># Element(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ overlap(elem: Element): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setPosition(x: double, y: double): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ElementGivePoint8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ElementGivePoint</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   numberPoints: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ElementGivePoint(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ElementMove8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ElementMove</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   followDirection: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movDirection: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ElementMove(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ backToLastPosition()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ move()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveDown(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveLeft(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveRight(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveUp(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameController951543133[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- checkElementColideWall(elements: ArrayList&lt;Element&gt;, numberGhost: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkOverlapGhostPacman(elements: ArrayList&lt;Element&gt;, pacman: Pacman, numberGhost: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkOverlapLaserPacman(elements: ArrayList&lt;Element&gt;, pacman: Pacman): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkPacmanEatSomeOneAndOrTimeFruittoDesappear(elements: ArrayList&lt;Element&gt;, pacman: Pacman)</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkTimeGhostBeNormal(elements: ArrayList&lt;Element&gt;, pacman: Pacman)</TD></TR>
+<TR><TD ALIGN="LEFT" >- checkTimetoAppearFruit(elements: ArrayList&lt;Element&gt;, matrix: int[][])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ drawAllElements(elemArray: ArrayList&lt;Element&gt;, g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getValidRandomPositionMatrix(matrix: int[][]): Position</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isValidPosition(elemArray: ArrayList&lt;Element&gt;, elem: Element): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ processAllElements(elements: ArrayList&lt;Element&gt;, matrix: int[][], cont: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameScreen951543133[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   cont: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   controller: GameController [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fileName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   gameState: GameState [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pacman: Pacman [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ GameScreen()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addElement(elem: Element)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dispose()</TD></TR>
+<TR><TD ALIGN="LEFT" >- fillInitialElemArrayFromMatrix(matrix: int[][])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ go()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initComponents()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyPressed(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyReleased(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ keyTyped(e: KeyEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- openSavedGame(fileName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ paint(gOld: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reStartGame(numberLifes: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeElement(elem: Element)</TD></TR>
+<TR><TD ALIGN="LEFT" >- saveElemArrayandStage()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GameState951543133[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GameState</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   elemArray: ArrayList&lt;Element&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stage: Stage [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ GameState(stage: Stage, elemArray: ArrayList&lt;Element&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ghost8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ghost</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Ghost(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeGhosttoBlue(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ changeGhosttoNormal(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" ># escapePacman()</TD></TR>
+<TR><TD ALIGN="LEFT" ># escapePacmanHorizontal(movDirectionPacman: int, posPacman: Position)</TD></TR>
+<TR><TD ALIGN="LEFT" ># escapePacmanVertical(movDirectionPacman: int, posPacman: Position)</TD></TR>
+<TR><TD ALIGN="LEFT" ># followPacman()</TD></TR>
+<TR><TD ALIGN="LEFT" ># followPacmanHorizontal(movDirectionPacman: int, posPacman: Position)</TD></TR>
+<TR><TD ALIGN="LEFT" ># followPacmanVertical(movDirectionPacman: int, posPacman: Position)</TD></TR>
+<TR><TD ALIGN="LEFT" ># moveRandom()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+HandlerStartButton495462879[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)HandlerStartButton</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ actionPerformed(ev: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InitialScreen951543133[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InitialScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   box: JComboBox&lt;String&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nomeImagemInicial: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   openButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startButton: JButton [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ InitialScreen()</TD></TR>
+<TR><TD ALIGN="LEFT" >- configureInitialScreen()</TD></TR>
+<TR><TD ALIGN="LEFT" >- configureMenu()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Inky8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Inky</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Inky(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Laser8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Laser</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Laser(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ activate()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deactivate()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LaserGun8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LaserGun</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   animationTime: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   currentImage: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   images: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   shotTime: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startTime: long [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   timeBetweenShots: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ LaserGun(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >- changeImage(imgIndex: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Main951543133[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ startGame()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PacDots8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PacDots</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ PacDots(imageName: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pacman8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pacman</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ghostEatenOnCurrentPowerPellet: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numberDotstoEat: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numberGhosttoEat: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numberLifes: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   remainingScore: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   score: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   startTimePower: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Pacman(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addGhostEatenOnCurrentPowerPellet()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addLife()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addNumberDotstoEat()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addRemainingScore(i: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addScore(i: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ minusNumberDotstoEat()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ minusNumberGhotstoEat()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pinky8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pinky</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Pinky(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Position111612081[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Position</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   previousX: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   previousY: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   x: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   y: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Position(x: double, y: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ comeBack(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ distance(pos: Position): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveDown(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveLeft(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveRight(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ moveUp(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setPosition(x: double, y: double): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PowerPellet8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PowerPellet</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ PowerPellet(imageName: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Stage111612081[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Stage</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   background: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   matrix: int[][] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Stage(id: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Strawberry8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Strawberry</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   startTime: long [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Strawberry(imageName: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Wall8339209[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Wall</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Wall(imageName: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ autoDraw(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+'edges    
+BackgroundElement8339209 -> LaserGun8339209[arrowhead=none, arrowtail=empty, dir=both];
+BackgroundElement8339209 -> Wall8339209[arrowhead=none, arrowtail=empty, dir=both];
+Blinky8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+Clyde8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+Clyde8339209 -> Position111612081[label="autoDraw() -> distance()"];
+Element8339209 -> BackgroundElement8339209[arrowhead=none, arrowtail=empty, dir=both];
+Element8339209 -> EatenGhostScore8339209[arrowhead=none, arrowtail=empty, dir=both];
+Element8339209 -> ElementGivePoint8339209[arrowhead=none, arrowtail=empty, dir=both];
+Element8339209 -> ElementMove8339209[arrowhead=none, arrowtail=empty, dir=both];
+Element8339209 -> Laser8339209[arrowhead=none, arrowtail=empty, dir=both];
+Element8339209 -> Position111612081[label="pos
+[0..1]"];
+ElementGivePoint8339209 -> PacDots8339209[arrowhead=none, arrowtail=empty, dir=both];
+ElementGivePoint8339209 -> PowerPellet8339209[arrowhead=none, arrowtail=empty, dir=both];
+GameController951543133 -> Cherry8339209[label="checkTimetoAppearFruit() -> Cherry()"];
+GameController951543133 -> EatenGhostScore8339209[label="checkPacmanEatSomeOneAndOrTimeFruittoDesappear() -> EatenGhostScore()"];
+GameController951543133 -> Strawberry8339209[label="checkTimetoAppearFruit() -> Strawberry()"];
+GameScreen951543133 -> Blinky8339209[label="fillInitialElemArrayFromMatrix() -> Blinky()"];
+GameScreen951543133 -> Clyde8339209[label="fillInitialElemArrayFromMatrix() -> Clyde()"];
+GameScreen951543133 -> GameController951543133[label="controller
+[0..1]"];
+GameScreen951543133 -> GameState951543133[label="gameState
+[0..1]"];
+GameScreen951543133 -> Inky8339209[label="fillInitialElemArrayFromMatrix() -> Inky()"];
+GameScreen951543133 -> Laser8339209[label="fillInitialElemArrayFromMatrix() -> Laser()"];
+GameScreen951543133 -> LaserGun8339209[label="fillInitialElemArrayFromMatrix() -> LaserGun()"];
+GameScreen951543133 -> Pacman8339209[label="pacman
+[0..1]"];
+GameScreen951543133 -> Pinky8339209[label="fillInitialElemArrayFromMatrix() -> Pinky()"];
+GameScreen951543133 -> PowerPellet8339209[label="fillInitialElemArrayFromMatrix() -> PowerPellet()"];
+GameScreen951543133 -> Wall8339209[label="fillInitialElemArrayFromMatrix() -> Wall()"];
+GameState951543133 -> Element8339209[label="elemArray
+[0..*]"];
+GameState951543133 -> Stage111612081[label="stage
+[0..1]"];
+Ghost8339209 -> Blinky8339209[arrowhead=none, arrowtail=empty, dir=both];
+Ghost8339209 -> Clyde8339209[arrowhead=none, arrowtail=empty, dir=both];
+Ghost8339209 -> Inky8339209[arrowhead=none, arrowtail=empty, dir=both];
+Ghost8339209 -> Pinky8339209[arrowhead=none, arrowtail=empty, dir=both];
+HandlerStartButton495462879 -> Main951543133[label="actionPerformed() -> startGame()"];
+Inky8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+Inky8339209 -> Position111612081[label="autoDraw() -> distance()"];
+LaserGun8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+Main951543133 -> InitialScreen951543133[label="main() -> InitialScreen()"];
+Pinky8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+Wall8339209 -> Drawing111612081[label="autoDraw() -> draw()"];
+    
+}
+@enduml

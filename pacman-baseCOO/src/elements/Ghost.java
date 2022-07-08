@@ -19,12 +19,15 @@ public abstract class Ghost extends ElementMove {
     public Ghost(String imageName) {
         super(imageName);
     }
-    
-     
-    
+
     abstract public void autoDraw(Graphics g);
-    
-    public void changeGhosttoBlue(String imageName) {
+
+	/**
+	 * Torna o ghost mortal e azul
+	 *
+	 * @param imageName
+	 */
+	public void changeGhosttoBlue(String imageName) {
         this.isTransposable = true;
         this.isMortal = true;
         
@@ -41,6 +44,11 @@ public abstract class Ghost extends ElementMove {
         }
     }
 
+	/**
+	 * Quando o ghost esta em modo mortal, volta ele para o modo normal
+	 *
+	 * @param imageName
+	 */
     public void changeGhosttoNormal(String imageName) {
         this.isTransposable = true;
         this.isMortal = false;
@@ -58,6 +66,9 @@ public abstract class Ghost extends ElementMove {
         }
     }
 
+	/**
+	 * Faz com que o ghost siga o pacman de acordo com sua posicao
+	 */
     protected void followPacman() {
     	Pacman pacman=Drawing.getGameScreen().getPacman();
         Position posPacman=pacman.getPos();

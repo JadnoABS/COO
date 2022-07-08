@@ -33,4 +33,20 @@ public class GameTest {
 
     }
 
+    @Test
+    public void testCollision() {
+
+        Element pacman = new Pacman("pacman.png");
+        Element clyde = new Clyde("clyde.png");
+
+        pacman.setPosition(10, 10);
+        clyde.setPosition(100, 100);
+
+        assertFalse(pacman.overlap(clyde));
+
+        clyde.setPosition(10, 10);
+
+        assertTrue(pacman.overlap(clyde));
+    }
+
 }

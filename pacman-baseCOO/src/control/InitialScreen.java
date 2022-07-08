@@ -1,18 +1,23 @@
 package control;
 
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
+import javax.sound.sampled.*;
 
 import javax.swing.*;
 
+import org.w3c.dom.ls.LSOutput;
 import utils.Consts;
 
-public class InitialScreen extends javax.swing.JFrame {
+public class InitialScreen extends javax.swing.JFrame implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private JButton startButton;
 	private JButton openButton;
-	private final String nomeImagemInicial = "inicialimagem.png";
+	private final String nomeImagemInicial = "menu.gif";
 	private static String[] levels = { "Level 1", "Level 2", "Level 3" };
 	
 	private JComboBox<String> box;
@@ -31,8 +36,14 @@ public class InitialScreen extends javax.swing.JFrame {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ACH2003 - Pacman");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(20, 20));
-        setResizable(false);		
+        //setLocation(new java.awt.Point(20, 20));
+		setLocationRelativeTo(null);
+		try {
+			AudioAcerto("pacmanSong.wav");
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		setResizable(false);
 	    
 
         try{
@@ -41,6 +52,26 @@ public class InitialScreen extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }	
         //pack();
+	}
+
+	//toca música
+	public void AudioAcerto(String arquivo) throws FileNotFoundException {
+			try {
+				//URL do som
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("imgs/" + arquivo).getAbsoluteFile());
+					Clip clip = AudioSystem.getClip();
+					clip.open(audioInputStream);
+					FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+					gainControl.setValue(-15.0f);  // Reduz o volume
+					clip.start();
+					clip.loop(Clip.LOOP_CONTINUOUSLY); //Para repetir o som.
+			}catch (FileNotFoundException e){
+				throw new FileNotFoundException("Arquivo não encontrado!");
+			} catch (Exception ex) {
+				System.out.println("Erro ao executar SOM!");
+				ex.printStackTrace();
+			}
+
 	}
 
 	private void configureMenu() {

@@ -71,19 +71,19 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     }    
     
     private void fillInitialElemArrayFromMatrix(int [][]matrix) {
-        pacman = new Pacman("pacman.png");
+        pacman = new Pacman("ghost1.png");
         this.addElement(pacman);
 
-        Blinky blinky=new Blinky("blinky.png");
+        Blinky blinky=new Blinky("pacman2.png");
         this.addElement(blinky);
 
-        Pinky pinky=new Pinky("pinky.png");
+        Pinky pinky=new Pinky("pacman3.png");
         this.addElement(pinky);
 
-        Inky inky=new Inky("inky.png");
+        Inky inky=new Inky("pacman4.png");
         this.addElement(inky);
 
-        Clyde clyde=new Clyde("clyde.png");
+        Clyde clyde=new Clyde("pacman1.png");
         this.addElement(clyde);
 
         for (int i=0;i<Consts.NUM_CELLS; i=i+1){
@@ -214,12 +214,16 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
+            ElementMove.mov = 3; //move up image;
             pacman.setMovDirection(Pacman.MOVE_UP);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            ElementMove.mov = 4; //move down image
             pacman.setMovDirection(Pacman.MOVE_DOWN);
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            ElementMove.mov = 1; //move left image
             pacman.setMovDirection(Pacman.MOVE_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            ElementMove.mov = 2; //move right image
             pacman.setMovDirection(Pacman.MOVE_RIGHT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             pacman.setMovDirection(Pacman.STOP);
@@ -249,9 +253,9 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Pacman");
+        setTitle("Pacman Level" + Main.level);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setLocation(new java.awt.Point(20, 20));
+        setLocation(new java.awt.Point(50, 50));
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -264,7 +268,6 @@ public class GameScreen extends javax.swing.JFrame implements KeyListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-        
          pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

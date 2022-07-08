@@ -1,5 +1,7 @@
 package utils;
 
+import elements.ElementMove;
+
 import java.io.Serializable;
 
 
@@ -59,7 +61,7 @@ public class Position implements Serializable {
         return this.setPosition(this.getX(), this.getY()+Consts.WALK_STEP);
     }
     public boolean moveLeft(){
-        return this.setPosition(this.getX(), this.getY()-Consts.WALK_STEP);        
+       return this.setPosition(this.getX(), this.getY()-Consts.WALK_STEP);
     }
 
 	public double distance(Position pos) {

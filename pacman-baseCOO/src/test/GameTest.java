@@ -1,5 +1,6 @@
 package test;
 
+import control.InitialScreen;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -7,6 +8,7 @@ import elements.*;
 import control.GameController;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
@@ -15,7 +17,7 @@ public class GameTest {
     @Test
     public void testPacman() {
 
-        Pacman pacman = new Pacman("pacman.png");
+        Pacman pacman = new Pacman("ghost1.png");
 
         assertEquals(0, pacman.getScore());
 
@@ -30,7 +32,13 @@ public class GameTest {
         assertEquals(1, pacman.getLifes());
         pacman.addLife();
         assertEquals(2, pacman.getLifes());
+    }
 
+    @Test
+    public void testIfThrowExceptionWhenMusicFileNotFound() {
+        InitialScreen initscree = new InitialScreen();
+        FileNotFoundException exception = assertThrows(FileNotFoundException.class, () -> initscree.AudioAcerto("erro"));
+        assertEquals("Arquivo não encontrado!", exception.getMessage());
     }
 
 }

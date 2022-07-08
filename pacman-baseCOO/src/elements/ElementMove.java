@@ -8,13 +8,13 @@ import java.io.Serializable;
 import java.util.Random;
 
 public abstract class ElementMove extends Element  {
-    
+    public static int mov=0;
     public static final int STOP = 0;
     public static final int MOVE_LEFT = 1;
     public static final int MOVE_RIGHT = 2;
     public static final int MOVE_UP = 3;
     public static final int MOVE_DOWN = 4;
-    private int movDirection = STOP;
+    public int movDirection = STOP;
     private int followDirection = MOVE_LEFT;
     
     public int getMoveDirection(){
@@ -44,15 +44,19 @@ public abstract class ElementMove extends Element  {
     public void move() {
         switch (movDirection) {
             case MOVE_LEFT:
+                //mov = 1;
                 this.moveLeft();
                 break;
             case MOVE_RIGHT:
+                //mov = 2;
                 this.moveRight();
                 break;
             case MOVE_UP:
+                //mov = 3;
                 this.moveUp();
                 break;
             case MOVE_DOWN:
+                //mov = 4;
                 this.moveDown();
                 break;
             default:

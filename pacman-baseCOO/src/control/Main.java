@@ -1,27 +1,6 @@
 package control;
 
 import javax.swing.JFrame;
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.URL;
-
-// Problemas a serem resolvidos:
-// - (RESOLVIDO) Fazer o pacman so ganhar vida com 10000 pontos
-// - (RESOLVIDO) Trocar os botoes da tela inicial por um menu
-// - (RESOLVIDO) Manter os fantasmas se movendo
-// - (RESOLVIDO) Jogo continua se o pacman perde uma vida
-// - (ACHO QUE RESOLVIDO) Jogo nao abre as vezes
-// - (RESOLVIDO) Implementar os metodos de salvar jogo
-// - (RESOLVIDO) Trocar a imagem do fantasma para uma que indique q qtd de pontos ganhos ao comer ele
-// - Incluir classe de teste com JUnit (pelo menos 3 metodos de teste)
-// - Incluir o nivel 4 (tem que ser mais dificil e inlcuir um elemento adicional)
-// - Verificar a hierarquia da classe Element
-// - Documentar cada um dos metodos
-// - Elaborar um diagrama de classes
-// - Verificar se algo mais esta fora da especificacao
-
 
 public class Main {
 

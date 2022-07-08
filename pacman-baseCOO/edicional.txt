@@ -1,8 +1,0 @@
-InitialScreen.java: line 36
-    Coloquei para a tela abrir no meio
-
-InitialScreen.java: line 52
-    Método AudioAcerto para tocar música
-
-GameScreen.java: line 38
-    Código para deixar no centro nao funcionou
